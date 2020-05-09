@@ -38,8 +38,7 @@
 .user {
     width: 100%;
     height: 55px;
-    background-color: lightgray;
-    border: 1px solid black;
+    background-color: #EDEDED;
 }
 
 #user-icons {
@@ -54,10 +53,12 @@
 }
 
 .user img {
-    max-width: 52px;
-    height: 52px;
+    width: 66px;
+    height: 48px;
     object-fit: contain;
+    margin: 5px;
     border-radius: 50%;
+    float: left;
 }
 
 #notifications {
@@ -102,13 +103,19 @@
     width: 100%;
     height: calc(100vh - 85px);
     background-color: lightgreen;
+    overflow-y: scroll;
 }
 
 .chat-preview {
     width: 100%;
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
+    background-color: white;
     display: inline-block;
+}
 
+.chat-preview:hover {
+    background-color: #e5e8ed;
+    cursor: pointer;
 }
 
 .chat-preview img {
@@ -121,18 +128,20 @@
 }
 
 .name {
-    color: black;
+    color: #4E4E4E;
     font-size: 15px;
     padding-top: 10px;
 
 }
 
 .last-message {
+    color: #A0A0A0;
     padding-top: 10px;
 }
 
 .time {
     float: right;
+    color: #A0A0A0;
 }
 
 
@@ -141,5 +150,24 @@
     width: 60%;
     height: 100%;
     float: left;
-    background-color: brown;
+}
+
+.chat-with {
+    width: 100%;
+    height: 80%;
+    background-image: url(img/bozobackimg.jpg);
+    overflow-y: scroll;
+}
+
+#user-last-time-seen {
+    color: #4E4E4E;
+    font-size: 15px;
+    padding-top: 10px;
+    float: left;
+}
+
+.footer {
+    width: 100%;
+    height: calc(20% - 55px);
+    background-color: gray;
 }
