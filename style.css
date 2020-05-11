@@ -7,7 +7,6 @@
 }
 
 /* template per js */
-
 .template {
     display: none;
 }
@@ -221,6 +220,16 @@
     color: gray;
 }
 
+/* JQUERY classes */
+
 .active {
     background-color: #e5e8ed;
+}
+
+.on {
+    display: inline-block;
+}
+
+.off {
+    display: none;
 }
