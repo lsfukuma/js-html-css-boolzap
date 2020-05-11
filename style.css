@@ -226,10 +226,6 @@
     background-color: #e5e8ed;
 }
 
-.on {
-    display: inline-block;
-}
-
-.off {
+.fa-paper-plane {
     display: none;
 }

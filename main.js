@@ -8,6 +8,11 @@ $('.fa-paper-plane').click(function(){
     console.log(msgUser);
     //primo stampo il messaggio dell'utente con text --che sostituisce tutto gia scritto prima
     $('.template .chat-with .chat-me p:first-child').text(msgUser);
+    //per l'orario corrente
+    var today = new Date();
+    var time = today.getHours() + "." + today.getMinutes();
+    console.log(time);
+    $('.template .chat-with .chat-me p:last-child').text(time);
     //copio l'elemento template
     var msgTemplate = $('.template .chat-with .chat-me').clone();
     console.log(msgTemplate);
