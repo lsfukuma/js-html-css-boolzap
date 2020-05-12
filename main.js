@@ -1,7 +1,7 @@
 // Milestone 1.2
 //Aggiunta di un messaggio​: l’utente scrive un testo nella parte bassa e cliccando “invia” il testo viene aggiunto al thread sopra, come messaggio verde
 
-$('.fa-paper-plane').click(function(){
+$('.footer #footer-icons i').click(function(){
     // debugger;
     //intercetto il messaggio dell'utente
     var msgUser = $('#send-msg').val();
@@ -21,14 +21,21 @@ $('.fa-paper-plane').click(function(){
         //se non è vuoto, aggiungo il messaggio alla chat
         $('.chat-with.real').append(msgTemplate)
     }
-    $('#send-msg').val('');    
+    $('#send-msg').val('');
 });
 
 //cambio icona quando clicco dentro l'input per inviare il messaggio
 
-$('#send-msg').click(function(){
-    //nascondo l'icona presente -- il microfono
-    $('.fas.fa-microphone').hide();
+$('#send-msg').focus(function(){
+    //cambio l'icona presente -- il microfono
+    $('.footer #footer-icons i').removeClass('fa-microphone');
     //faccio apparire l'altra icona
-    $('fa-paper-plane').show();
+    $('.footer #footer-icons i').addClass('fa-paper-plane');
+});
+
+$('#send-msg').blur(function(){
+    //cambio l'icona presente -- il microfono
+    $('.footer #footer-icons i').removeClass('fa-paper-plane');
+    //faccio apparire l'altra icona
+    $('.footer #footer-icons i').addClass('fa-microphone');
 });
