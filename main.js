@@ -66,23 +66,16 @@ $('#search i').click(function(){
     //recupero il testo scritto dall'utente, salvando un una variabile
     var searchUser = $('#search input').val();
     console.log(searchUser);
-    //vedo se il testo scritto dall'utente è presente in ogni p che ho
-    $('.messages').each(function(){
+    //vedo se il testo scritto dall'utente è presente in alcun messaggio
+    $('.messages .chat-preview .name').each(function(){
         var nameMessage = $(this).text() ///text() vuoto legge solo la stringa
-        if (searchUser == nameMessage) {
-            $(this).siblings().show();
+        if (searchUser.includes(nameMessage)) {
+            $(this).parent().addClass('active');
+        } else if (!searchUser.includes(nameMessage)) {
+            $(this).parent().addClass('notactive');
         } else {
-            $('.messages .name').hide();
-
+            //resetto la lista
+            $('.messages').show();
         }
     });
-    // $('.messages .last-message').each(function(){
-    //     var lastMessage = $(this).text() ///text() vuoto legge solo la stringa
-    //     if (searchUser == lastMessage) {
-    //         lastMessage.show();
-    //     } else {
-    //         $(this).hide();
-    //     }
-    // });
-
 });

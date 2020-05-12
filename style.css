@@ -224,4 +224,9 @@
 
 .active {
     background-color: #e5e8ed;
+    display: inline-block;
+}
+
+.notactive {
+    display: none;
 }
