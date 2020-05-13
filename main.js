@@ -1,31 +1,31 @@
 //cambio icona quando clicco dentro l'input per inviare il messaggio
 
-$('#send-msg').focus(function(){
+$('.send-msg').focus(function(){
     //toggle entre le due classi di icona microfono e airplane
-    $('.footer #footer-icons i').toggleClass('fa-microphone fa-paper-plane');
+    $('.footer .footer-icons i').toggleClass('fa-microphone fa-paper-plane');
 });
 
-$('#send-msg').blur(function(){
-    $('.footer #footer-icons i').toggleClass('fa-paper-plane fa-microphone');
+$('.send-msg').blur(function(){
+    $('.footer .footer-icons i').toggleClass('fa-paper-plane fa-microphone');
 });
 
 // Milestone 1.2
 //Aggiunta di un messaggio​: l’utente scrive un testo nella parte bassa e cliccando “invia” il testo viene aggiunto al thread sopra, come messaggio verde
 //invio messagio cliccando enter
-$('#send-msg').keypress(function(){
+$('.send-msg').keypress(function(){
     if (event.which == 13) {
         sendMessage()
     }
 });
 
 //invio messaggio cliccando sull'icona
-$('.footer #footer-icons i').click(function(){
+$('.footer .footer-icons i').click(function(){
     sendMessage();
 });
 
 //funzione per inviare il msg dentro la chat.
 function sendMessage (){
-    var msgUser = $('#send-msg').val();
+    var msgUser = $('.send-msg').val();
     console.log(msgUser);
     //primo stampo il messaggio dell'utente con text -- funzione che sostituisce tutto gia scritto prima.
     $('.template .chat-with .chat-me p:first-child').text(msgUser);
@@ -43,7 +43,7 @@ function sendMessage (){
         $('.chat-with.real').append(msgTemplate)
     }
     //reinizializzo l'input
-    $('#send-msg').val('');
+    $('.send-msg').val('');
 
     //milestone 2.1 -- dopo che l'utente ha inviato un messaggio: il pc invia una risposta dopo 1 secondo
     setTimeout(function(){
@@ -52,7 +52,7 @@ function sendMessage (){
         $('.template .chat-with .chat-friend p:first-child').text(answerPc);
         //per l'orario corrente
         $('.template .chat-with .chat-friend p:last-child').text(time);
-        //clono le'elemento dal template
+        //clono l'elemento dal template
         var pcTemplate = $('.template .chat-with .chat-friend').clone();
         //appendo il msg dal pc
         $('.chat-with.real').append(pcTemplate);
@@ -80,7 +80,7 @@ $('#search i').click(function(){
     } else {
         //resetto la lista
         $('.chat-preview').show();
-        $('#search input').val('')
+        $('#search input').val('');
     }
 });
 
@@ -94,6 +94,8 @@ $('.messages .chat-preview').click(function(){
     var chatIndex = $(this).index();
     console.log(chatIndex);
     //recupero il div in posizione corrispondente
+    // var msgChatHere = $('.singlemsg').eq(chatIndex)
+    // console.log(msgChatHere);
     $('.singlemsg').eq(chatIndex).addClass('active');
 });
 
