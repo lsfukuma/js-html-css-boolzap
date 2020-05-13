@@ -1,5 +1,4 @@
 //cambio icona quando clicco dentro l'input per inviare il messaggio
-
 $('.send-msg').focus(function(){
     //toggle entre le due classi di icona microfono e airplane
     $('.footer .footer-icons i').toggleClass('fa-microphone fa-paper-plane');
@@ -8,9 +7,6 @@ $('.send-msg').focus(function(){
 $('.send-msg').blur(function(){
     $('.footer .footer-icons i').toggleClass('fa-paper-plane fa-microphone');
 });
-
-// Milestone 1.2
-//Aggiunta di un messaggio​: l’utente scrive un testo nella parte bassa e cliccando “invia” il testo viene aggiunto al thread sopra, come messaggio verde
 //invio messagio cliccando enter
 $('.send-msg').keypress(function(){
     if (event.which == 13) {
@@ -22,6 +18,9 @@ $('.send-msg').keypress(function(){
 $('.footer .footer-icons i').click(function(){
     sendMessage();
 });
+
+// Milestone 1.2
+//Aggiunta di un messaggio​: l’utente scrive un testo nella parte bassa e cliccando “invia” il testo viene aggiunto al thread sopra, come messaggio verde
 
 //funzione per inviare il msg dentro la chat.
 function sendMessage (){
@@ -40,7 +39,7 @@ function sendMessage (){
     //controllo che il messaggio non sia vuoto
     if (msgUser !== ('')) {
         //se non è vuoto, aggiungo il messaggio alla chat
-        $('.chat-with.real').append(msgTemplate)
+        $('.singlemsg.active > .chat-with.real').append(msgTemplate)
     }
     //reinizializzo l'input
     $('.send-msg').val('');
@@ -55,7 +54,7 @@ function sendMessage (){
         //clono l'elemento dal template
         var pcTemplate = $('.template .chat-with .chat-friend').clone();
         //appendo il msg dal pc
-        $('.chat-with.real').append(pcTemplate);
+        $('.singlemsg.active > .chat-with.real ').append(pcTemplate);
         console.log(answerPc);
     }, 1000);
 }
@@ -94,11 +93,8 @@ $('.messages .chat-preview').click(function(){
     var chatIndex = $(this).index();
     console.log(chatIndex);
     //recupero il div in posizione corrispondente
-    // var msgChatHere = $('.singlemsg').eq(chatIndex)
-    // console.log(msgChatHere);
     $('.singlemsg').eq(chatIndex).addClass('active');
+
 });
-
-
 
 // Cancella messaggio: ​cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
