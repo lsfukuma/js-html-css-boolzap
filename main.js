@@ -66,16 +66,37 @@ $('#search i').click(function(){
     //recupero il testo scritto dall'utente, salvando un una variabile
     var searchUser = $('#search input').val();
     console.log(searchUser);
+    //se l'utento ha inserito un testo
+    if (searchUser !== '') {
     //vedo se il testo scritto dall'utente è presente in alcun messaggio
-    $('.messages .chat-preview .name').each(function(){
-        var nameMessage = $(this).text() ///text() vuoto legge solo la stringa
-        if (searchUser.includes(nameMessage)) {
-            $(this).parent().addClass('active');
-        } else if (!searchUser.includes(nameMessage)) {
-            $(this).parent().addClass('notactive');
-        } else {
-            //resetto la lista
-            $('.messages').show();
-        }
-    });
+        $('.messages .chat-preview .name').each(function(){
+            var nameMessage = $(this).text() ///text() vuoto legge solo la stringa
+            if (searchUser.includes(nameMessage)) {
+                $(this).parent().show();
+            } else {
+                $(this).parent().hide();
+            }
+        });
+    } else {
+        //resetto la lista
+        $('.chat-preview').show();
+        $('#search input').val('')
+    }
 });
+
+// Milestone 3
+// Click sul contatto​ mostra la conversazione del contatto cliccato, è possibile inserire nuovi messaggi per ogni conversazione
+//intercetto il Click
+$('.messages .chat-preview').click(function(){
+    //tolgo la classe active di tutti i div
+    $('.singlemsg').removeClass('active');
+    //prendo l'indice dell'item su cui ho cliccato
+    var chatIndex = $(this).index();
+    console.log(chatIndex);
+    //recupero il div in posizione corrispondente
+    $('.singlemsg').eq(chatIndex).addClass('active');
+});
+
+
+
+// Cancella messaggio: ​cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato

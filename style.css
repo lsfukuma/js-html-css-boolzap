@@ -149,10 +149,11 @@
 
 
 /* lato destro */
-#singlemsg {
+.singlemsg {
     width: 60%;
     height: 100%;
     float: left;
+    display: none;
 }
 
 .chat-with {
@@ -222,11 +223,10 @@
 
 /* JQUERY classes */
 
-.active {
+.on {
     background-color: #e5e8ed;
-    display: inline-block;
 }
 
-.notactive {
-    display: none;
+.active {
+    display: inline-block;
 }
