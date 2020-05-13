@@ -190,6 +190,26 @@
     margin: 2%;
 }
 
+/* per menu tendina */
+.chat-me::after:hover {
+    font-family: "Font Awesome 5 Free";
+    content: '\f078'
+    font-weight: 900;
+
+}
+.message-options {
+    float: right;
+}
+
+.message-options-panel {
+    background-color: white;
+    float: right;
+    clear: both;
+    padding: 2%;
+    cursor: pointer;
+    display: none;
+}
+
 .time-chat {
     float: right;
     color: #A0A0A0;

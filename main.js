@@ -98,3 +98,12 @@ $('.messages .chat-preview').click(function(){
 });
 
 // Cancella messaggio: ​cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
+
+//intercetto il Click e faccio aprire il menu a tendina
+$('i.message-options').click(function(){
+    $('.message-options-panel').toggleClass('active');
+});
+
+$('.message-destroy').on('click' , function(){
+    $(this).previous('div').hide();
+})
