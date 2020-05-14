@@ -19,8 +19,54 @@ $('.footer .footer-icons i').click(function(){
     sendMessage();
 });
 
-// Milestone 1.2
-//Aggiunta di un messaggio​: l’utente scrive un testo nella parte bassa e cliccando “invia” il testo viene aggiunto al thread sopra, come messaggio verde
+//Milestone 2
+//2.2 Ricerca utenti: ​scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
+$('#search i').click(function(){
+    //recupero il testo scritto dall'utente, salvando in una variabile
+    var searchUser = $('#search input').val().trim().toLowerCase();
+    console.log(searchUser);
+    //se l'utento ha inserito un testo
+    if (searchUser !== '') {
+    //vedo se il testo scritto dall'utente è presente in alcun messaggio
+        $('.messages .chat-preview .name').each(function(){
+            var nameMessage = $(this).text().toLowerCase(); ///text() vuoto legge solo la stringa
+            if (searchUser.includes(nameMessage)) {
+                $(this).parent().show();
+            } else {
+                $(this).parent().hide();
+            }
+        });
+    } else {
+        //resetto la lista
+        $('.chat-preview').show();
+        $('#search input').val('');
+    }
+});
+
+// Milestone 3
+// Click sul contatto​ mostra la conversazione del contatto cliccato, è possibile inserire nuovi messaggi per ogni conversazione
+//intercetto il Click
+$('.messages .chat-preview').click(function(){
+    //tolgo la classe active di tutti i div
+    $('.singlemsg').removeClass('active');
+    //prendo l'indice dell'item su cui ho cliccato
+    var chatIndex = $(this).index();
+    console.log(chatIndex);
+    //recupero il div in posizione corrispondente
+    $('.singlemsg').eq(chatIndex).addClass('active');
+
+});
+
+// Cancella messaggio: ​cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
+
+//intercetto il Click e faccio aprire il menu a tendina
+$(document).on('click', '.chat-with' ,function(){
+    $('.message-options-panel').toggleClass('active');
+});
+
+$('.message-destroy').on('click' , function(){
+    $(this).siblings().remove();
+})
 
 //funzione per inviare il msg dentro la chat.
 function sendMessage (){
@@ -58,52 +104,3 @@ function sendMessage (){
         console.log(answerPc);
     }, 1000);
 }
-
-//Milestone 2
-//2.2 Ricerca utenti: ​scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
-$('#search i').click(function(){
-    //recupero il testo scritto dall'utente, salvando un una variabile
-    var searchUser = $('#search input').val();
-    console.log(searchUser);
-    //se l'utento ha inserito un testo
-    if (searchUser !== '') {
-    //vedo se il testo scritto dall'utente è presente in alcun messaggio
-        $('.messages .chat-preview .name').each(function(){
-            var nameMessage = $(this).text() ///text() vuoto legge solo la stringa
-            if (searchUser.includes(nameMessage)) {
-                $(this).parent().show();
-            } else {
-                $(this).parent().hide();
-            }
-        });
-    } else {
-        //resetto la lista
-        $('.chat-preview').show();
-        $('#search input').val('');
-    }
-});
-
-// Milestone 3
-// Click sul contatto​ mostra la conversazione del contatto cliccato, è possibile inserire nuovi messaggi per ogni conversazione
-//intercetto il Click
-$('.messages .chat-preview').click(function(){
-    //tolgo la classe active di tutti i div
-    $('.singlemsg').removeClass('active');
-    //prendo l'indice dell'item su cui ho cliccato
-    var chatIndex = $(this).index();
-    console.log(chatIndex);
-    //recupero il div in posizione corrispondente
-    $('.singlemsg').eq(chatIndex).addClass('active');
-
-});
-
-// Cancella messaggio: ​cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
-
-//intercetto il Click e faccio aprire il menu a tendina
-$('i.message-options').click(function(){
-    $('.message-options-panel').toggleClass('active');
-});
-
-$('.message-destroy').on('click' , function(){
-    $(this).previous('div').hide();
-})
