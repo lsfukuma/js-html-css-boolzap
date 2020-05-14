@@ -165,7 +165,11 @@
     overflow-y: scroll;
 }
 
-#user-last-time-seen {
+.real {
+    display: none;
+}
+
+#user-name , #last-time-seen {
     color: #4E4E4E;
     font-size: 15px;
     padding: 15px 5px;

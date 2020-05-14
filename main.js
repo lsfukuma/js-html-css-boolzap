@@ -48,13 +48,23 @@ $('#search i').click(function(){
 //intercetto il Click
 $('.messages .chat-preview').click(function(){
     //tolgo la classe active di tutti i div
-    $('.singlemsg').removeClass('active');
+    $('.chat-with.real').removeClass('active');
     //prendo l'indice dell'item su cui ho cliccato
     var chatIndex = $(this).index();
     console.log(chatIndex);
     //recupero il div in posizione corrispondente
-    $('.singlemsg').eq(chatIndex).addClass('active');
+    $('.chat-with.real').eq(chatIndex).addClass('active');
+//per cambiare il nome del contatto cliccato
+var nameContact = $(this).find('.name').text();
+console.log(nameContact);
+// devo inserire il nome nel posto giusto
+$('#user-name').text(nameContact);
 
+//per cambiare la foto del contatto su cui ho cliccato
+var photoContact = $(this).find('.contact-img').attr('src');
+console.log(photoContact);
+//inserire la foto del contatto cliccato nella parte superiore destra (chat attiva)
+$('.photo-chat').attr('src' , photoContact);
 });
 
 // Cancella messaggio: ​cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
@@ -85,7 +95,7 @@ function sendMessage (){
     //controllo che il messaggio non sia vuoto
     if (msgUser !== ('')) {
         //se non è vuoto, aggiungo il messaggio alla chat
-        $('.singlemsg.active > .chat-with.real').append(msgTemplate)
+        $('.chat-with.real.active').append(msgTemplate)
     }
     //reinizializzo l'input
     $('.send-msg').val('');
@@ -100,7 +110,7 @@ function sendMessage (){
         //clono l'elemento dal template
         var pcTemplate = $('.template .chat-with .chat-friend').clone();
         //appendo il msg dal pc
-        $('.singlemsg.active > .chat-with.real ').append(pcTemplate);
+        $('.chat-with.real.active ').append(pcTemplate);
         console.log(answerPc);
     }, 1000);
 }
