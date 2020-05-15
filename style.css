@@ -203,25 +203,16 @@
     color: #B6B9BB;
 }
 
-.fa-chevron-down {
-    display: none;
-}
-
-.chatme i {
-    opacity: 1;
-}
-
 .message-options {
     float: right;
 }
 
 .message-options-panel {
     background-color: white;
-    float: right;
-    clear: both;
     padding: 2%;
     cursor: pointer;
     display: none;
+    float: right;
 }
 
 .time-chat {

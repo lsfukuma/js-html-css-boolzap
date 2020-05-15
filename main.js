@@ -76,19 +76,24 @@ $('.messages .chat-preview').click(function(){
 // Cancella messaggio: ​cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
 
 //intercetto il Click e faccio aprire il menu a tendina
-$('.chat-with').on('click',  function(){
-    // $(this).children('.message-options-panel').toggleClass('active');
+$('.chat-with').on('click', function(){
     var navTemplate = $('.template .chat-with .message-options-panel').clone();
-    navTemplate.toggleClass('active');
+    navTemplate.addClass('active');
     $('.chat-with.real.active ').append(navTemplate);
+    setTimeout (function(){
+    navTemplate.removeClass('active')
+    }, 2000);
 });
 
-$('.chat-with').on('mouseleave','.chat-with' , function(){
-    $('.message-options-panel.active').removeClass('active');
-});
+// $('.singlemsg.active').on('click', '.message-options-panel.active' , function(){
+//     $('.message-options-panel.active').removeClass('active');
+//
+// });
 
-$('.chat-with').on('click' , '.message-destroy',  function(){
-    $(this).parent().siblings('.chat-me').remove();
+$('.chat-with').on('click', '.message-destroy',  function(){
+    $(this).parent().siblings('.chat-me').text('Questo messaggio è stato eliminato');
+    var navTemplate = $('.template .chat-with .message-options-panel').clone();
+    navTemplate.removeClass('active');
 });
 
 //funzione per inviare il msg dentro la chat.
