@@ -7,6 +7,7 @@ $('.send-msg').focus(function(){
 $('.send-msg').blur(function(){
     $('.footer .footer-icons i').toggleClass('fa-paper-plane fa-microphone');
 });
+
 //invio messagio cliccando enter
 $('.send-msg').keypress(function(){
     if (event.which == 13) {
@@ -49,34 +50,46 @@ $('#search i').click(function(){
 $('.messages .chat-preview').click(function(){
     //tolgo la classe active di tutti i div
     $('.chat-with.real').removeClass('active');
+    //rimuovo lo sfondo grigio di tutti i contatti
+    $('.messages .chat-preview').removeClass('on');
     //prendo l'indice dell'item su cui ho cliccato
     var chatIndex = $(this).index();
     console.log(chatIndex);
     //recupero il div in posizione corrispondente
     $('.chat-with.real').eq(chatIndex).addClass('active');
-//per cambiare il nome del contatto cliccato
-var nameContact = $(this).find('.name').text();
-console.log(nameContact);
-// devo inserire il nome nel posto giusto
-$('#user-name').text(nameContact);
+    //aggiungo lo sfondo grigio al contatto attivo
+    $(this).addClass('on');
 
-//per cambiare la foto del contatto su cui ho cliccato
-var photoContact = $(this).find('.contact-img').attr('src');
-console.log(photoContact);
-//inserire la foto del contatto cliccato nella parte superiore destra (chat attiva)
-$('.photo-chat').attr('src' , photoContact);
+    //per cambiare il nome del contatto cliccato
+    var nameContact = $(this).find('.name').text();
+    console.log(nameContact);
+    // devo inserire il nome nel posto giusto
+    $('#user-name').text(nameContact);
+
+    //per cambiare la foto del contatto su cui ho cliccato
+    var photoContact = $(this).find('.contact-img').attr('src');
+    console.log(photoContact);
+    //inserire la foto del contatto cliccato nella parte superiore destra (chat attiva)
+    $('.photo-chat').attr('src' , photoContact);
 });
 
 // Cancella messaggio: ​cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
 
 //intercetto il Click e faccio aprire il menu a tendina
-$('.chat-with').on('click' ,function(){
-    $('.message-options-panel').toggleClass('active');
+$('.chat-with').on('click',  function(){
+    // $(this).children('.message-options-panel').toggleClass('active');
+    var navTemplate = $('.template .chat-with .message-options-panel').clone();
+    navTemplate.toggleClass('active');
+    $('.chat-with.real.active ').append(navTemplate);
 });
 
-$('.message-destroy').on('click' , function(){
-    $(this).siblings().remove();
-})
+$('.chat-with').on('mouseleave','.chat-with' , function(){
+    $('.message-options-panel.active').removeClass('active');
+});
+
+$('.chat-with').on('click' , '.message-destroy',  function(){
+    $(this).parent().siblings('.chat-me').remove();
+});
 
 //funzione per inviare il msg dentro la chat.
 function sendMessage (){
