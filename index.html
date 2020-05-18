@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="style.css">
         <script src="https://kit.fontawesome.com/9cd5be54d3.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
         <title>Boolzapp</title>
     </head>
     <body>
@@ -114,7 +115,7 @@
         </div>
 
         <!-- template to use with js -->
-        <div class="template">
+        <!-- <div class="template">
             <div class="chat-with">
                 <div class="chat-me">
                     <p></p>
@@ -130,7 +131,25 @@
                     <i class="fas fa-chevron-down"></i>
                     <p class="time-chat"></p>
                 </div>
-            </div>
+            </div> -->
+            <script id="send-msg" type="text/x-handlebars-template">
+                <div class="chat-with">
+                    <div class="chat-me">
+                        <p> {{ mymessage }}</p>
+                        <i class="fas fa-chevron-down"></i>
+                        <p class="time-chat">{{ time }}</p>
+                    </div>
+                    <div class="message-options-panel">
+    					<div class="message-info">Info messaggio</div>
+    					<div class="message-destroy">Cancella messaggio</div>
+    				</div>
+                    <div class="chat-friend">
+                        <p></p>
+                        <i class="fas fa-chevron-down"></i>
+                        <p class="time-chat"></p>
+                    </div>
+                </div>
+            </script>
         <script src="main.js" charset="utf-8"></script>
     </body>
 </html>

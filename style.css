@@ -181,8 +181,9 @@
     float: left;
     padding: 10px;
     border-radius: 15px;
-    margin: 10px;
+    margin: 20px;
     clear: both;
+    position: relative;
 }
 
 .chat-me {
@@ -190,22 +191,22 @@
     float: right;
     clear: both;
     border-radius: 15px;
-    padding: 10px;
+    padding: 18px 10px;
     margin: 10px;
+    position: relative;
 }
 
 /* per menu tendina */
 .chat-me i:hover , .chat-friend i:hover {
-    color: lightgray;
-    /* font-family: "Font Awesome 5 Free";
-    content: '\f078';
-    font-weight: 900;
-    float: right;
-    color: #B6B9BB; */
+    color: gray;
 }
 
 .chat-me i , .chat-friend i {
     color: transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+
 }
 
 .message-options {

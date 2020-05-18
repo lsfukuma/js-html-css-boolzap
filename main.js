@@ -91,7 +91,7 @@ $('.singlemsg.active').on('click', '.message-options-panel.active' , function(){
 //cancello il msg (quelle che ho inviata)
 $('.chat-with').on('click', '.message-destroy',  function(){
     $(this).parent().siblings('.chat-me').text('Questo messaggio è stato eliminato');
-    var navTemplate = $('.template .chat-with .message-options-panel').clone();
+    var navTemplate = $('.template .chat-with.active .message-options-panel').clone();
     navTemplate.removeClass('active');
 });
 
@@ -138,3 +138,16 @@ function sendMessage (){
         console.log(answerPc);
     }, 1000);
 }
+
+//Handlebars invio di messaggio
+var templateHtml = $('#send-msg').html();
+
+var templateFunction = Handlebars.compile(templateHtml);
+
+var sendMsg = {
+
+}
+
+var finalHtml = templateFunction(sendMsg);
+
+$('.chat-with.real.active ').append(finalHtml);
