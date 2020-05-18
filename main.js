@@ -22,7 +22,7 @@ $('.footer .footer-icons i').click(function(){
 
 //Milestone 2
 //2.2 Ricerca utenti: ​scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
-$('#search i').click(function(){
+$('#search input').keyup(function(){
     //recupero il testo scritto dall'utente, salvando in una variabile
     var searchUser = $('#search input').val().trim().toLowerCase();
     console.log(searchUser);
@@ -31,7 +31,7 @@ $('#search i').click(function(){
     //vedo se il testo scritto dall'utente è presente in alcun messaggio
         $('.messages .chat-preview .name').each(function(){
             var nameMessage = $(this).text().toLowerCase(); ///text() vuoto legge solo la stringa
-            if (searchUser.includes(nameMessage)) {
+            if (nameMessage.includes(searchUser)) {
                 $(this).parent().show();
             } else {
                 $(this).parent().hide();
@@ -75,26 +75,32 @@ $('.messages .chat-preview').click(function(){
 
 // Cancella messaggio: ​cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
 
-//intercetto il Click e faccio aprire il menu a tendina
-$('.chat-with').on('click', function(){
+//intercetto il Click e faccio aprire il menu a tendina -- in tutte i due tipi di msg (inviati e ricevuti)
+$('.chat-with').on('click', '.fa-chevron-down', function(){
     var navTemplate = $('.template .chat-with .message-options-panel').clone();
-    navTemplate.addClass('active');
+    navTemplate.toggleClass('active');
     $('.chat-with.real.active ').append(navTemplate);
-    setTimeout (function(){
-    navTemplate.removeClass('active')
-    }, 2000);
 });
 
-// $('.singlemsg.active').on('click', '.message-options-panel.active' , function(){
-//     $('.message-options-panel.active').removeClass('active');
-//
-// });
 
+$('.singlemsg.active').on('click', '.message-options-panel.active' , function(){
+    $('.message-options-panel.active').removeClass('active');
+
+});
+
+//cancello il msg (quelle che ho inviata)
 $('.chat-with').on('click', '.message-destroy',  function(){
     $(this).parent().siblings('.chat-me').text('Questo messaggio è stato eliminato');
     var navTemplate = $('.template .chat-with .message-options-panel').clone();
     navTemplate.removeClass('active');
 });
+
+// //cancello il msg ricevuto
+// $('.chat-with').on('click', '.message-destroy',  function(){
+//     $(this).parent().siblings('.chat-friend').text('Questo messaggio è stato eliminato');
+//     var navTemplate = $('.template .chat-with .message-options-panel').clone();
+//     navTemplate.removeClass('active');
+// });
 
 //funzione per inviare il msg dentro la chat.
 function sendMessage (){

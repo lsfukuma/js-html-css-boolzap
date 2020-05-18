@@ -195,12 +195,17 @@
 }
 
 /* per menu tendina */
-.chat-me:hover::before , .chat-friend:hover::before {
-    font-family: "Font Awesome 5 Free";
+.chat-me i:hover , .chat-friend i:hover {
+    color: lightgray;
+    /* font-family: "Font Awesome 5 Free";
     content: '\f078';
     font-weight: 900;
     float: right;
-    color: #B6B9BB;
+    color: #B6B9BB; */
+}
+
+.chat-me i , .chat-friend i {
+    color: transparent;
 }
 
 .message-options {
